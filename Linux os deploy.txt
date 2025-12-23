@@ -1,0 +1,168 @@
+Linux Server Lifecycle OS Deployment:
+
+steps to follow the hierarchy
+
+PHASE 1:Requirement(Before any server)
+
+Identify Server Type:
+
+*New server/Existing server
+*PHY/VM/Cloud
+*Purpose:web/app/DB/storage/CI or CD/Monitoring
+
+Define Resources:
+
+*CPU,RAM,Disk Size
+*OS version(ubuntu 20.4/22.04,centos7/stream)----cat /etc/os-release
+*Network:Static ip,Gateway,DNS
+*Security:SSH access,firewalls rules
+
+PHASE 2:OS Provisioning Method(Install OS) for New Server
+
+*Manual ISO installation
+*VM Template
+*PXE boot (kickstart/preseed)
+*cloud-init(AWS/Azure)
+*Automation(Packer)
+
+OS Installation:
+
+*Boot from ISO/Template.
+*Select: *Language *Timezone
+*Disk partitioning(Recommended)
+*Network setup:Static IP---Ipv4
+*create admin user
+*Enable SSH
+
+Verify After install:
+
+ip a,ip addr,netsh,hostname -i,ifconfig---To set an IP for an server
+df -h----Disk file size in human readable format
+hostname---To set an server hostname for identity
+systemctl status sshd----To check the secure shell sshd services status
+
+PHASE 3:Base OS Configuration
+
+Update OS:
+
+apt update && apt upgrade -y----ubuntu,dnf update -y
+
+Set Hostname:
+
+hostnamectl set-hostname <server name>
+
+Network configuration-Netplan:
+
+vi /etc/netplan/01-netcfg.yaml---completed,netplan apply
+
+Configure SSH:
+
+vi /etc/ssh/sshd_config---once completed
+
+systemctl restart sshd
+
+Firewall Setup:
+
+ufw allow ssh,ufw allow 80(http),ufw allow 443(https),ufw allow 22(ssh),ufw enable,ufw status---ubuntu
+
+firewall-cmd --add-service=ssh --permanent,firewall-cmd --add-service=http --permanent,firewall-cmd --reload(centos)
+
+PHASE 4:User & Access Management:
+
+Create user:
+
+useradd devuser/sudo usermod devuser,passwd devuser/sudo passwd devuser
+
+Grant sudo:
+
+usermod -aG sudo devuser---ubuntu,usermod -aG wheel devuser---centos
+
+PHASE 5:Package & Service Management
+
+Install Packages:
+
+apt install nginx -y(ubuntu),dnf install nginx -y(centos)
+
+Manage Services:
+
+systemctl start nginx,systemctl enable nginx,systemctl status nginx
+
+PHASE 6:Storage & Filesystem Management:
+
+Check Disk:
+
+lsblk---list the block devices of Storage data
+df -h
+
+Extend Disk(LVM/VM):
+
+growpart /dev/sda 2
+resize2fs /dev/sda2
+
+PHASE 7:Deployment & Automation
+
+Golden Image/Template:
+
+*create base VM
+*Install packages
+*convert to template
+
+Ansible Automation:
+
+apt install ansible -y,ansible-playbook install.yml(Run)
+
+Monitoring Commands:
+
+rsync -av /data/backup
+
+PHASE 9:Troubleshooting
+
+Server/VM Status:
+
+uptime,dmsg|tail 
+
+Network Issues:
+
+ip a,ping gateway,ping 8.8.8.8
+
+Disk Issues:
+
+df -h,du -sh /*|sort -h
+
+Memory/CPU:
+
+free -h,top,htop
+
+Service Issues:
+
+journalctl -u sshd,ls -ld ~/.ssh
+
+Firewall/SELinux:
+
+ufw status
+iptables -L
+getenforce
+setenforce 0
+
+Common Issues & Command Fix:
+
+Server Not Reachable:
+
+Systemctl restart network,systemctl restart sshd
+
+Disk Full:
+
+journalctl --vacuum-time=7d,rm -rf /var/log/*.gz
+
+Service Port Not Listening:
+
+ss -tulnp,netstat -tulnp 
+
+
+
+
+
+
+
+
+

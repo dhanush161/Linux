@@ -1,0 +1,21 @@
+/-root
+/boot-Bootloader Files
+/etc-config files
+/home-home Directories
+/root-root home directories
+/opt-Thirt - Party Applications
+/dev-device files
+/var-variable files
+/bin-user binaries(ubin/usrbin)
+/sbin-system binaries
+/usr-user applications
+/proc-process information
+/mnt-mount directory(mount)
+/unmnt-unmount directory(unmount)
+/sys-virtual file system
+/media-removable devices
+/run-temporary file system
+/tmp-temporary file system
+/lost+found-recover broken files
+/lib-system libraries
+/srv-Service data Directory
