@@ -1,0 +1,344 @@
+UBUNTU:
+cd /,cd ~
+ls -la(the user should use or edit the files on the location.
+history-it will gives all commands recently you used.
+ls -li(it is index node it serves a unique identifier for a specific piece of metadata on a filesystem).
+find / -name filename,find / -iname fIndMe,find / -type f -name findme(files),find / -type d -name findme(Directories)
+dmidecode,lscpu-system architecture and hardware
+wc -l,-c,-m,-w(letters,words,counts,characters)
+cat file1 file2 > file3(combine 2 files)
+echo "myfile">>filename
+cat myfile
+pwd>pwd.txt(point to print root dir),cat pwd.txt(print),pwd>>pwd.txt(append on concatenation)----Redirection
+crontab -e--Edit
+crontab -l--Save(scheduled jobs)
+sudo systemctl start cron
+systemctl status cron
+check system time
+crontab entry
+check /var/log/messages
+httpd,sshd,chronyd(service that keep runs in background-Daemon service)
+systemctl status service_name(httpd,ssshd,chronyd.service)
+systemctl start service_name
+systemctl enable service_name
+systemctl disable service_name
+systemctl stop service_name
+DNS,SMTP,FTP,SSH,DHCP,Squid,Http,Https-53,25,21,22,(67,68),(3128),80,443(http traffic port-8080)
+rpm -qa | grep <pkg_name>(eg: rpm -qa | grep httpd)
+ping -c 3 www.google.com(ping packets 3 times)
+less /etc/group(list of group names & GIDS)
+$?(exit status of previously executed cmd)-echo $?
+cat /proc/cpuinfo(displays the no. & type of processsors)-lscpu(hardware systems)
+listusb,usbls,lsusb,getusb(use to get a list of connected USB devices)
+pwd,home,path,userprofile(environment variables)--- echo $HOME
+cd /root;cat /etc/passwd(cmd precceded the semicolon-TRUE)
+0-255(values exit status for 0-successful,others-unsuccessful)
+/var/log(FHS-Filesystem hierarchy standard for log files),ping don't use a port
+files transfer from linux server to windows OS(using ftp,sftp,ssh and tools like winscp,filezilla)
+split -l 3 file_name(Split a file into 3)
+sort file_name | uniq
+locate cmd search in its own db & u will need to keep updating db and find cmd search the entire file system
+pwd | tee file1 (or) cat file1 (it will redirect as same like a both cmds and give output as /root)
+cat filelist.txt|xargs wc -l(it converts stdinput into cmd line argument)
+ls -1 | wc -l(find no. of files,folders in a directory wc counts including files & folders,ls -1 everything in 1 line)
+head -30 file_name|tail -5(read only line 26th to 30th line)
+netstat -l(network connectivity tcp / udp connection status)
+netstat -e(exit)
+netstat -putan|grep <port no.>----22,2222,443,8080,80
+swap space,free -h,swapon --show,sudo mkswap/swapfile,sudo swapon/swapfile
+top,htop---cpu process utilization
+top -1-----cpu usage per core
+sigatop/sigtstp---normal stop
+kill -9 pid---force stop
+kill pid---grace stop
+ps -ef(shows all processes running)
+ifconfig,ip a,ip addr,hostname -i,ip addr show,netstat---to check device ip
+hostname---server/computer or device name
+ssh -i username@hostname/ip address(To access from one server to another) 
+command>file2>&1(standard output & error to file)
+ping,nslookup,dig,host(cmd for DNS resolution)
+At (cmd is used for schedule a task once/tmrow)
+Atd (cmd service is used for At cmd)
+chgrp nginx /var/www(cmd changes thr grp owner of /var/www dir to the nginx grp)
+setfacl,getfacl(ACL list cmd)
+ln -s(soft link will be remove if original file remove/delete).
+ln (Hard link rename,delete/remove the file will not effect the link). 
+export(temporary,permanent & globbal Environment variables).
+.bashrc(To set variable for current user).
+/etc/bashrc or /etc/profile(To set variabvle for globally).
+pidofhttpd(cmd allows yu to display all process IDs of running nginx process).
+ps -l <PID>(Eg...nice -n 5 process,niceness(NI) scale goes from -20 to 19)
+renice -20 -p <PID>(To complete its task faster than defaultr rate/ this can done by top cmd also).
+nohup process &,nohup process>/dev/null 2>&1&(To run a task/script in bkground even if yu close your terminal).
+jobs---(see all active jobs).---sleep 5s
+fg,bg(To resume a stopped job in bkground/frground).
+dmesg(cmd displays info. about kernel-relate msg along wit hardware & system startup msgs store in kernel ring buffer).
+ls -l *.xml(dir yu have a combination of files like xml,yml,scripts,texts,logs etc...).
+touch file{1..100}---create 100 files with name upto file 100).
+ls [cm]*(yu display all files in the present working dir that start with either the letter "c" or "m").
+cat file|grep -v^#(run a cmd shows all lines except any lines start with character # in a file).
+ls -1|grep -v^a(cmd lists all files&directories except those begin with letter "e").
+echo b{a,e,i,o}t(bash cmd produce outp of "bat bet bit bot"?).
+Bare metal Hypervisor(vmware vsphere/ESXi,xen/citrix xenserver)-Type 1,Hosted Hypervisor-Type 2.
+lvs(cmd use to display list of current config logical volumes).
+sudo lvs(it require root access).
+vgs(cmd use to display list of current config volume groups).
+free -h,swap(cmd use to display mem usage,include amunt of swap space being used).
+lsblk -f(To check ypur linux filesystem).
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT (allow ssh)
+cat /etc/os-release,uname -a(os version)
+netstat -tulnp,ss -tulnp or nmap(To check open ports in linux tcp & udp listening ports)
+iptables -A INPUT -s <IP> -j DROP(To block a specific IP in linux firewall)
+Bash(Bourne-Again Shell),Tcsh,Zsh and Ksh(Korn Shell)
+sudo useradd -m -d /home/newuser -s/bin/bash -c "New User" -u 1001 -g users -G sudo,ad -e 2025-01-01 new(create a new user using useradd or adduser cmd,globally yu can use sudo cmd)
+root user,/root home dir,/root dir(root is the super-user,root is the home directory of that user,root is also the parent directory or forward slash--/,parent directory-hierarchy)
+r=read,w=write,x=execute,-=regular file or denied,d=directory,!=symbolic link
+ps,top,htop----To view active processes cmd
+A daemon is a background process that runs continously and typically starts at boot.(pgrep [daemon name],ps aux|grep [daemon name]----sshd,sudo apt purge pkg_name)
+soft link is a pointer to a file it means yu can visualize it as a shortcut to that file,deleting the original file affects a soft link but a hard link.
+hard link is a direct mirror of the file,it means both files will be synced and auto-updatring like copy/replica.
+grep "string" file1.txt
+A symbolic link/symlink is a file that points to another file or directory.It's a reference that can be used to access the target file.
+symbolic link types hard/soft link.
+iNodes is a datastructure on a filesystem that stores information about a file except its name or actual data.Every file/directory is associated with inode,ewhich identified by a inode number in the filesystem.This inode number is a unique identifier within the filesystem.
+ls -li(inode cmd to view the inode number of filename)
+ifconfig/ip addr show(find ip address)
+sshd is the ssh daemon that allows secure remote connections to the server.
+cat /etc/passwd,/etc/passwd(user account information)
+find cmd is to search the exact name of the filename in a entire directory and locate cmd is used to search an a particular filename and give the output of the path of a directory.
+iptables is a command-line utility in linux used for configuring network packet filtering rules & yu can define rules  how incoming,outgoing & forwarding network packets should be handled & manipulated.
+An environmetal variable is a named value that can affect the way running processes behave on a computer.(cmd--printenv)
+export VARNAME=value(Environment variables can be set using the export cmd)
+sudo cat /etc/shadow,cat /etc/shadow(file stores actual password data in an encrypted format for user's accounts with additional properties related to users password.
+wget & curl both are command-line tools for transferring data over the network.
+wget is simpler and designed to download files.
+curl means if ypu are working with the post and get methods for the http request to get some data from the website for the API & calls and all.
+curl protocols including http,https,ftp,ftps,scp,sftp,tftp,ldap,ldaps,dict,telnet,file,imap,pop3,smtp,smb
+find . -name "*.txt"|xargs rm
+*/15 **** /path/to/command(yu can schedule a task yu can do path to cmd or path to script
+package manager is a collection of tools that automates the process of installing,upgrading,configuring & removing software packages in a consistent manner.
+Common package manager--->apt(Debian/Ubuntu),yum(RHEL/CentOS) & zypper(openSUSE).
+yum is a front-end tool for package management that automatically resolves dependencies.(can resolve the dependencies)
+while rpm is a lowet-level tool that manages individual packages without automatically handling dependencies.(cannot resolve the dependencies)
+apt list --installed(Debian/Ubuntu),rpm -qa(RHEL/CentOS)-->list all instsalled packages using package manager.
+A service is a program that runs in the background,typically initated at system startup.
+/etc/fstab is a system configuration file that contains information about different file systems and how they are mounted.
+sudo cat /etc/fstab,cat /etc/fstab-->System configuration file
+Logical Volume Manager(LVM) allows for flexible disk management by creating,resizing & deleting logical volumes.
+A simple script can be created using a text editor,starts with shebang line(#!/bin/bash for bash script) follow shell commmands.
+The script file should be executable with chmod +x scriptname
+Eg..> $vi test.sh-> ctrl+i-Insert mode #!/bin/bash & next line-> echo HELLO after :wq (Save & quit).
+There is two ways to execute the script: $bash test.sh,output is HELLO and $chmod +x test.sh,$./test.sh,output is HELLO.
+nohup is used to run a command/script in the background even after logging out from the shell.
+Stream Editor(sed) is a ver powerful processing tool used for parasing and transforming text,typically used in pipelines.
+Syntax: sed 's/Linux/Unix/g' example.txt(s->Substitution,g->Globally)
+/var directory contains variable data like system logs(/var/log),mail(/var/mail) & temporary files required for running applications.
+/var is used to run th applications like temporary files,mails & logs.
+Eg.-> $ls -ld /var(ld-Linux Distribution),$cd /var/,[var]#ls--->/var
+$ cd log,[log]#ls----->/var/log
+top,htop,vmstat,iostat & sar--->System performance can be monitored using tools.
+ssh-secure shell is a protocol used to securely access & manage systems remotely.
+ssh security can be enhanced by disableing root login,changing the default port,using key-based authentication & configuring firewalls.
+The /home directory contains the personal directories of all users.
+awk is a powerful programming language & tool used for pattern scanning & processing.
+Eg.-> awk '{print $2}' data.txt
+Free memory can be checked using the free command or by examining the contents of /proc/meminfo & for cpu is /proc/cpuinfo
+Swap space is a portion of a hard disk drive(HDD) that is used for virtual memory when the physical memory(RAM) is full.
+A swap file can be created using dd to allocate space,mkswap to set up a linux swap area & swapon to enable the swap file.
+Eg.-> dd(allocate space),mkswap(to set up space area),swapon(enable swap file)
+The /etc/hosts file is used to map hostanames to IP address.
+Eg.->sudo cat /etc/hosts,cat /etc/hosts
+Static Ip address is set by editing network configuration files or using network management tools or commands,depending on the distribution.
+Eg.-> nmcli
+nslookup is a network administration command line tool used for querying the DNS to obtain domain name or IP address mapping.
+iptables is a traditional form of linux firewall & firewalld is a more dynamic,frontend friendly tool that interfaces with iptables configuration\
+The dmidecode commmand is used to retrieve detailed information about the system's hardware from the BIOS/DMI table in a human-readable format.
+Eg.->sudo dmidecode|more (use this cmd get BIOS information & get more memory space allocation).
+Runlevels are predefined modes that a linux system can run in each with a specific purpose like single-user mode,multi-user mode,GUI mode etc.check using runlevel command.
+*Runlevel 0:Halt/Shut down the system-->poweroff.target 
+*Runlevel 1:Single User Mode-->rescue.target
+*Runlevel 2:Multi-user Mode without Networking-->multi-user.target with modern distributions,networking is started at all multi-user runlevels
+*Runlevel 3:Multi-user Mode with Networking-->mutli-user.target
+*Runlevel 4:User-Defined/Spare-->multi-user.target as well typically not used & available for custom configurations
+*Runlevel 5:Full multi-user mode(with Network graphical user interface)-->graphical.target
+*Runlevel 6:Reboot-->reboot.target
+Eg.-> $runlevel and output is N 5
+Runlevels can be changed using the init/telinit command for systemctl in systemd-based systems.
+The /boot directory contains essential files needed to boot the system,including the linux kernel,initial RAM disk images & the bootloader configuration.
+rsync is used for fast and versatile file copying,both locally & remotely.It's commonly used for backups and mirroring.
+A Linux Distribution is a version of the operating system that includes the Linux kernel,a pkg management system & other supporting software & libraries.
+popular Linux Distribution includes Ubuntu,Fedora,CentOS,Debian,Red Hat Enterprise Linux(RHEL) & openSUSE.
+The hostname can be changed using the hostnamectl command or by editing /etc/hostname.
+System logs record various of the operating system.They are typically located in the /var/log directory.
+netstat is used to display network connections,routing tables,interface statistics,masquerade connections & multicast memberships.
+How to you add a new disk to a linux system withhout rebooting:
+*Scan the SCSI bus using commands like echo "---">/sys/class/scsi_host/host0/scan
+*Partitioning(ex/dev/sdb using fdisk)
+*Formatting the new disk(using mkfs)
+*Mount
+Eg:-> lsblk
+/etc/sysconfig contains scripts & configuration files that manage the startup of services & configure aspects of system behaviour.
+Eg:-> $cat /etc/sysconfig,[sysconfig]#ls
+apt-get update && apt-get upgrade(Debian/Ubuntu),yum update(RHEL/CentOS)--->Update all packages.
+Ccommon Network configuration files includes /etc/network/interfaces(Debian/Ubuntu),/etc/sysconfig/network-scripts/ifcfg-eth0(RHEL/CentOS) & /etc/netplan/*.yaml(newer Ubuntu versions).
+Eg.-> $cat /etc/sysconfig/network-scripts/ifcfg-rh.txt
+$cat /etc/sysconfig/,[sysconfig]#cd network-scripts/,[network-scripts]#ls output is readme-ifcfg-rh.txt,[network-scripts]#less readme-ifcfg-rh.txt
+The default runlevel can be changed by editing the /etc/inittab file in SysVinit systems or by using systemctl set-default in systemd systems.
+Eg.-> [network-scripts]#systemctl get-default & output is graphical.target
+/etc/resolv.conf contains information about DNS servers and search domains for the host.
+lsof command-(lists open files & the processes using them). 
+Eg.->[network-scripts]#lsof
+dmesg displays the kernel-related messages & helps in troubleshooting hardware & driver related issues.
+usermod is used to modify a user's system properties such as username,home directory & group.
+The size of a directory can be found using the du command.
+/etc/cron.* dircetories contain scripts that are run periodically at fixed times,dates or intervals by the cron daemon.
+Eg.->#cd /etc/cron,#cd /etc/cron.,#cd /etc/cron.*
+The priority of a process can be changed using the renice command.
+mount/unmount is used to attach/detach a filesystem to a directory in the filesystem tree.
+mask/unmask command is used to set the default permission or default file creation permisssion for new files & new directory whenever yu create new files default permission should assigned those files.
+/opt is used for storing optional software & packages that are not part of the default installation.
+netstat -tuln,ss -tuln(find which processes are listening on a specific port).
+dig(Domain Information Groper) is a network administration command line tool for queryibg DNS name servers. 
+A quota is a system feature used to limit the amount of disk space &/or the number of files(inodes) a user or groupcan use.
+/usr contains user utilies & applications,supporting files for the operating system.
+Hardware details can be found using commands like lshw,lscpu,lsblk,lspci.
+sysctl is used to modify kernel parameters at runtime.
+The kernel version can be checked using uname -r.
+Daemon is a background process that runs continously,often started at boot time.
+whereas service is a process that performs a specific function and may not run continously.
+Output redirected using > for standard output & 2> standard error.
+/proc is a virtual filesystem that provides a mechanism to access kernel & process information in a file-like structure.
+tr is used for translating or deleting characters from standard input and writing to standard output.
+Eg:->echo "hello world"|tr 'a-z''A-Z'
+PATH is an environnment variable specifying a set of directories where executable programs are located.
+LD_LIBRARY_PATH is used to specify a set of directories where librares should be searched for first,before the standard set of directories. 
+df -h
+VI/VIM Editor:
+vim file.txt
+i-insert before cursor
+a-insert after cursor
+x-del char
+dw-del single word
+dd,2dd,3dd-del line,2line,3line
+u-undo
+ctrl+r-redo
+:wq!,:wq,:q!
+ZZ-save and exit,ZQ,ZX-exit without save
+
+Nano Editor:
+nano file.txt
+backspace,delete-del one char
+ctrl+k-delete entire line
+alt+u-undo
+alt+e-redo
+ctr+o-save
+ctrl+x-quit
+ctrl+w-search
+ctrl+_-go to line
+ctrl+k-cut line
+ctrl+u-paste
+
+Navigation: pwd, cd /path, ls -la
+Files: touch, cp, mv, rm -r, mkdir -p,rmdir
+View: cat, less, head -n 20, tail -f file
+Search: grep -R "pattern" ., awk '{print $2}' file
+Processes: ps aux, top, htop, kill PID, nohup cmd &
+Network: ip a, ss -tuln, ping 8.8.8.8, curl -I example.com, ssh user@host
+Packages: sudo apt update && sudo apt install -y pkg
+Services: systemctl start|stop|status|enable <service>
+Archive: tar -czvf file.tar.gz dir/, tar -xzvf file.tar.gz -C /dest
+Sync: rsync -avz src dest	
+hostame -i
+sudo hostnamectl set-hostname<new host name>
+sudo set newpasswd <usrname>
+smb://ip/----connect
+sudo ip addr add ip(.../24) dev enp0s3
+sudo ip addr del ip(.../24) dev enp0s3
+ip add or ip addr show
+ip a
+sudo ip route add default via ip
+
+id -un,whoami,groups username----check the username
+sudo passwd newuser
+sudo passwd -e username----force usr to chg next log on
+sudo chage -l username-----set passwd expiry check details
+sudo chage -M 30 username-----set passwd expire after 30 days
+sudo passwd user-----change other users password
+passwd username-----reset forgoten passwd
+ctrl+c-----cancels
+scp c:\users\user\file.txt username@ubuntu-ip:/home/username/---windows
+scp file.txt user@ubuntu-ip:/home/user/----local to remote ubuntu
+scp file.txt username@windows-ip:/mnt/c/users/user/Documents/---ubuntu
+sudo adduser username----create user
+sudo useradd -m -s /bin/bash username--create user
+sudo passwd username---change user password
+sudo deluser username----delete user and home directory
+sudo deluser --remove-home username----delete user and home directory
+sudo passwd -l username---Lock user(Disable)
+sudo passwd -u username---Unlock user(Enable)
+sudo usermod -aG groupname username-----Add user to group
+sudo deluser username groupname----Remove user from group
+sudo usermod -s /bin/bash username-----Change default shell
+sudo usermod -d /new/home/path username--change user home directory
+id username----check user information
+sudo chown user:group file----change Ownership
+chmod 755 file----owner full, others read+execute
+sudo usermod -L username----Disable password Authentication(Extra Security)
+sudo chage -E 2025-12-31 username
+sudo grep -i '^Port' /etc/ssh/sshd_config---check ssh port
+sudo lsof -i -P -n | grep sshd---ssh process port
+sudo ss -tulpn---check active ssh port
+ 
+chmod 644 file----owner write+read, others read
+chmod 777 file----everyone full access
+
+
+systemd: systemctl status|start|stop|restart|daemon-reload, journalctl -u <unit> -f, systemd-analyze blame
+
+tracing/profiling: strace -p PID, perf record -p PID, perf report, bpftrace
+
+sockets/networking: ss -tulpen, ip rule/route, ip -d addr, tcpdump -i eth0 host X and port Y
+
+firewall: nft list ruleset, nft add rule ... (or legacy iptables)
+
+storage: pvdisplay|vgdisplay|lvdisplay, lvextend, resize2fs, xfs_growfs
+
+security: aa-status, apparmor_parser, cryptsetup status, auditctl/ausearch
+
+containers: docker/podman run|inspect, ctr (containerd), check /proc/<pid>/ns for namespace info
+
+automation: ansible-playbook, terraform plan/apply, gitlab-runner, act for local actions
+
+CENTOS:
+Navigation: pwd, ls -la, cd
+
+Files: cp, mv, rm, touch, cat, less
+
+Search: grep, find, locate
+
+Text tools: awk, sed, cut, sort, uniq, tr
+
+Archiving: tar, gzip, bzip2, xz
+
+Packages: dnf, yum, rpm -qa
+
+Services: systemctl, journalctl
+
+Users: useradd, usermod, passwd, chage
+
+Disk: lsblk, fdisk -l, blkid, mount, umount, pvcreate, vgcreate, lvcreate
+
+Network: ip, ss, netstat (old),
+
+RHEL:
+File ops: ls, cp, mv, rm, find / -name pattern
+
+Text: less, grep -R "pattern", awk, sed
+
+Processes: ps aux, top, kill, systemctl
+
+Network: ip addr, ss -tuln, curl, nmcli
+
+Package: dnf install/remove/update, rpm -qa | grep pkg
+
+Storage: lsblk
